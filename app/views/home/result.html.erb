@@ -1,0 +1,42 @@
+<h1>餃子の王将ガチャ</h1>
+<%= form_tag("/result") do %>
+  <label>
+    ご予算：
+    <% if @last_budget == 2000 %>
+    <select name="budget">
+      <option value=1000>1000</option>
+      <option value=1500>1500</option>
+      <option value=2000 selected>2000</option>
+    </select>
+    <% elsif @last_budget == 1500 %>
+      <select id="budget" name="budget">
+        <option value=1000>1000</option>
+        <option value=1500 selected>1500</option>
+        <option value=2000>2000</option>
+      </select>
+    <% else %>
+      <select id="budget" name="budget">
+        <option value=1000 selected>1000</option>
+        <option value=1500>1500</option>
+        <option value=2000>2000</option>
+      </select>
+    <% end %>
+    <input class="btn btn-danger" type="submit" value="ガチャを回す" />
+  </label>
+<% end %>
+
+<div>
+  ご予算は<%= @budget %>円です。
+  <p>
+    -------------------------------------
+  </p>
+  <% @menu_list.each do |menu|%>
+    <p>
+      <%= link_to(menu.name, menu.url, target: '_blank') %> <%= menu.price %>円(税込)
+    </p>
+  <% end %>
+  <p>
+    -------------------------------------
+  </p>
+  合計金額：<%= @sum %>円(税込)
+</div>

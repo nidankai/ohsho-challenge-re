@@ -1,0 +1,14 @@
+<%= javascript_pack_tag 'top' %>
+<div id="root"></div>
+
+<%= form_tag("/result") do %>
+  <label>
+    ご予算：
+    <select name="budget">
+      <option value=1000>1000</option>
+      <option value=1500>1500</option>
+      <option value=2000>2000</option>
+    </select>
+    <input class="btn btn-danger" type="submit" value="ガチャを回す" />
+  </label>
+<% end %>
